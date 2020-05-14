@@ -37,7 +37,7 @@ const routes = [{
 
     },
     {
-        path: '/adminn',
+        path: '/admin',
         redirect: 'HelloWorld',
 
 
