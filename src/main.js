@@ -18,12 +18,13 @@ new Vue({
 router.beforeEach((to, from, next) => {
     console.log('to', to, 'from', from, 'next', next);
     if (to.meta.requiresAuth) {
-        console.log('這裡需要驗證');
+        // console.log('這裡需要驗證');
 
         const api = `https://vue-course-api.hexschool.io/api/user/check`;
 
         axios.post(api).then(res => {
             console.log(res.data);
+            console.log('這裡需要驗證');
             if (res.data.success) {
                 next(); //如果正確
             } else {
@@ -38,4 +39,4 @@ router.beforeEach((to, from, next) => {
     }
 
     // ...
-})
+});
