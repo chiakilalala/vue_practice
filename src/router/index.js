@@ -11,13 +11,13 @@ const routes = [{
 
     },
 
-    {
-        path: '/',
-        name: 'Home',
-        component: Home,
-        meta: { requiresAuth: true }
+    // {
+    //     path: '/',
+    //     name: 'Home',
+    //     component: Home,
+    //     meta: { requiresAuth: true }
 
-    },
+    // },
     {
         path: '/about',
         name: 'About',
