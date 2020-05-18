@@ -50,7 +50,7 @@ export default {
       this.$http.post(api, vm.user).then(res => {
         console.log(res.data);
         if (res.data.success) {
-          vm.$router.push("/"); //登入成功轉到首頁
+          vm.$router.push("/admin/products"); //登入成功轉到首頁
         }
       });
     }
