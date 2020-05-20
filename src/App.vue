@@ -18,14 +18,14 @@ export default {
   // this.$store.dispatch('actionAJAXexample');
 
   // },
-  created(){
-    const api =`https://vue-course-api.hexschool.io/api/chiaki/products`
-    //api 伺服器路徑
-    this.axios.get(api).then((response) => {
-    console.log(response.data);
-  })
-//  this.$store.dispatch('getApi');
-}
+//   created(){
+//     const api =`https://vue-course-api.hexschool.io/api/chiaki/products`
+//     //api 伺服器路徑
+//     this.axios.get(api).then((response) => {
+//     console.log(response.data);
+//   })
+// //  this.$store.dispatch('getApi');
+// }
 }
 </script>
 

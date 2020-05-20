@@ -14,17 +14,18 @@
       </thead>
 
       <tbody>
-        <tr v-for="(item,index) in products" :key="item.id">
+        <tr v-for="(item) in products" :key="item.id">
           <td>{{ item.category }}</td>
           <td>{{ item.title }}</td>
           <td class="text-right">{{ item.origin_price}}</td>
           <td class="text-right">{{ item.price}}</td>
           <td>
+                <!-- 產品如果為啟用 is_enabled == 1 -->
             <span v-if="item.is_enabled" class="text-success">啟用</span>
             <span v-else>未啟用</span>
           </td>
           <td>
-            <button class="btn btn-outline-primary btn-sm" @click="openModel(false,false)">編輯</button>
+            <button class="btn btn-outline-primary btn-sm" @click="openModel(false,item)">編輯</button>
           </td>
         </tr>
       </tbody>
@@ -186,7 +187,7 @@ export default {
     return {
       products: [],
       tempProduct: {},
-      isNew: false
+      isNew:false
     };
   },
   methods: {
@@ -212,17 +213,17 @@ export default {
     },
     updateProducts() {
       const api = `https://vue-course-api.hexschool.io/api/yommy1108/admin/product`;
-      let httpMethod = "post";
+       let httpMethod = 'post';
       const vm = this;
-
+      
+      if (!vm.isNew) {
+        //假設產品不是新的
+        const api = `https://vue-course-api.hexschool.io/api/yommy1108/admin/product/${vm.tempProduct.id}`;
+        httpMethod = 'put';
+      }
+      console.log(api, "update");
       this.axios[httpMethod](api, { data: vm.tempProduct }).then(response => {
         console.log(response.data);
-
-        if (!vm.isNew) {
-          //假設產品不是新的
-          const api = `https://vue-course-api.hexschool.io/api/yommy1108/admin/product/${vm.tempProduct.id}`;
-          httpMethod = "put";
-        }
         if (response.data.success) {
           $("#productModal").modal("hide"); //新增成功的話就會關掉視窗並取得遠端的內容
           vm.getProducts(); //重新取得資料一次
